@@ -1,15 +1,16 @@
 import * as React from 'react';
-import { Dimensions, Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import styles from './styles';
 import { AntDesign, Ionicons } from '@expo/vector-icons';
-
 import { Theme, Mocks } from '../../../constans';
 
 import Header from './Header';
-import TimelineItem from '../../modules/TimelineItem';
 import { AppProperties } from '../../../../resources/app.properties';
+
+import TimelineItem from '../../modules/TimelineItem';
+import Post from './Post';
 
 export default function HomeScreen () {
 
@@ -81,60 +82,7 @@ export default function HomeScreen () {
 
       <View style={styles.feedContainer}>
         
-      {Mocks.Posts.map(post => 
-        <View key={post.id} style={styles.post}>
-          <View style={styles.postHeader}>
-            <Image 
-              style={styles.postUserAvatar} 
-              source={{uri: Mocks.Users.filter(user => user.id === post.userId).forEach(user => user.avatar)}} 
-            />
-            <View style={styles.postUserDetails}>
-              <Text style={styles.postUserName}>
-                {Mocks.Users.filter(user => user.id === post.userId).forEach(user => user.name)}
-              </Text>
-              <Text style={styles.postUserUsername}>
-                {Mocks.Users.filter(user => user.id === post.userId).forEach(user => user.username)}
-              </Text>
-            </View>
-          </View>
-          <View style={styles.postContent}>
-            <Image 
-              style={[styles.postImage, {height: (Dimensions.get('window').width - (Theme.Sizes.FeedPaddingHorizontal + 2))}]} 
-              source={{uri: post.content}} 
-            />
-          </View>
-          <View style={styles.postFooter}>
-            <View style={styles.postOptionsMenu}>
-              <TouchableOpacity 
-                style={styles.postOptionButton} 
-                onPress={() => ''} 
-                activeOpacity={0.8}
-              >
-                <Ionicons style={styles.postOptionButtonIcon} name="heart-outline" />
-              </TouchableOpacity>
-              <TouchableOpacity 
-                style={styles.postOptionButton} 
-                onPress={() => ''} 
-                activeOpacity={0.8}
-              >
-                <Ionicons style={styles.postOptionButtonIcon} name="chatbox-outline" />
-              </TouchableOpacity>
-              <TouchableOpacity 
-                style={styles.postOptionButton} 
-                onPress={() => ''} 
-                activeOpacity={0.8}
-              >
-                <Ionicons style={[styles.postOptionButtonIcon, styles.postOptionButtonIconShare]} name="paper-plane-outline" />
-              </TouchableOpacity>
-            </View>
-            <View style={styles.postDescriptionContent}>
-              <Text style={styles.postDescriptionText}>
-                {post.description}
-              </Text>
-            </View>
-          </View>
-        </View>
-      )}
+      {Mocks.Posts.map(post => <Post key={post.id} data={post} /> )}
 
       </View>
 

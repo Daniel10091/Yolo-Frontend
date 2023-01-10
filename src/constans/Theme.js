@@ -69,7 +69,7 @@ const Sizes = {
   FeedPostUserUsernameSize: 11,
   FeedPostFooterPadding: 13,
   FeedPostFooterPaddingBottom: 20,
-  FeedPostOptionButtonSize: 30,
+  FeedPostOptionButtonSize: 36,
   FeedPostOptionButtonSpace: 10,
   FeedPostOptionButtonRadius: 10,
   FeedPostOptionButtonIconSize: 22,
